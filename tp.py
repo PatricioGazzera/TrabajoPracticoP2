@@ -1,3 +1,7 @@
+from os import system
+import sqlite3
+from datetime import datetime
+
 class ProgramaPrincipal:
 
     def menu(self):
@@ -85,6 +89,15 @@ class Monopatin_2:
     def cargar_monopatin_2(self):
         conexion = Conexiones()
         conexion.abrirConexion()
+         try:
+            conexion.miCursor.execute("INSERT INTO MONOPATIN_2(modelo,marca,potencia,precio,color,fechaUltimoPrecio) VALUES('{}', '{}','{}','{}','{}','{}')".format(self.modelo, self.marca,self.potencia,self.precio,self.color,self.fechaUltimoPrecio))
+            conexion.miConexion.commit()
+            print("Monopatin cargado exitosamente")
+        except:
+            print("Error al agregar un monopatin")
+        finally:
+            conexion.cerrarConexion()
+
 
 
 class Conexiones:
