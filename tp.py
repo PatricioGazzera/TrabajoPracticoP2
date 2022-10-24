@@ -77,27 +77,23 @@ class ProgramaPrincipal:
         conexion.miConexion.commit()     
         conexion.cerrarConexion() 
 
-class Monopatin_2:
-    def __init__(self, modelo,marca, potencia,precio=None,color=None,fechaUltimoPrecio=None):
-        self.modelo = modelo
+class Monopatin_1:
+    def __init__(self, marca, precio=None,cantidad=None,disponibilidad=None):
         self.marca = marca
-        self.potencia = potencia
         self.precio=precio
-        self.color=color
-        self.fechaUltimoPrecio=fechaUltimoPrecio
-
-    def cargar_monopatin_2(self):
+        self.cantidad=cantidad
+        self.disponibilidad=disponibilidad
+    def cargar_monopatin1(self):
         conexion = Conexiones()
         conexion.abrirConexion()
-         try:
-            conexion.miCursor.execute("INSERT INTO MONOPATIN_2(modelo,marca,potencia,precio,color,fechaUltimoPrecio) VALUES('{}', '{}','{}','{}','{}','{}')".format(self.modelo, self.marca,self.potencia,self.precio,self.color,self.fechaUltimoPrecio))
+        try:
+            conexion.miCursor.execute("INSERT INTO MONOPATIN_1(marca,precio,cantidad,disponibilidad) VALUES('{}', '{}','{}','{}')".format(self.marca,self.precio,self.cantidad,self.disponibilidad))
             conexion.miConexion.commit()
             print("Monopatin cargado exitosamente")
-        except:
-            print("Error al agregar un monopatin")
-        finally:
-            conexion.cerrarConexion()
 
+     
+    
+    
 
 
 class Conexiones:
