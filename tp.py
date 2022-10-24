@@ -106,7 +106,42 @@ class Monopatin_1:
                 print(a)
         except:
             print("Error al listar los monopatines")
-        
+        finally:
+            conexion.cerrarConexion()
+
+    
+    def modificar_disponibilidad(self):
+        conexion = Conexiones()
+        conexion.abrirConexion()
+        try:
+            conexion.miCursor.execute("UPDATE MONOPATIN_1 SET disponibilidad =  (SELECT disponibilidad FROM MONOPATIN_1 where marca = '{}') + 1 ".format(self.marca))
+            conexion.miConexion.commit()
+            print("Disponibilidad actualizada")
+        except:
+            print("No se puede actualizar la disponibilidad")
+        finally:
+            conexion.cerrarConexion()    
+
+    def modificar_monopatin_1(self):
+        conexion = Conexiones()
+        conexion.abrirConexion()
+        try:
+            conexion.miCursor.execute("UPDATE MONOPATIN_1 SET precio='{}' where marca='{}' ".format(self.precio,self.marca))
+            conexion.miConexion.commit()
+            print("Monopatin modificado correctamente")
+        except:
+            print('Error al actualizar el monopatin')
+        finally:
+            conexion.cerrarConexion() 
+
+    def eliminar_monopatin_1(self):
+        conexion = Conexiones()
+        conexion.abrirConexion()
+        try:
+            
+            conexion.miCursor.execute("DELETE FROM MONOPATIN_1 where marca='{}' ".format(self.marca))
+            conexion.miConexion.commit()
+            print("Monopatin eliminado correctamente")
 
      
     
