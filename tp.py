@@ -78,3 +78,13 @@ class Monopatin_2:
         self.modelo = modelo
         self.marca = marca
         self.potencia = potencia
+
+
+class Conexiones:
+    
+    def abrirConexion(self):
+        self.miConexion = sqlite3.connect("agencia")
+        self.miCursor = self.miConexion.cursor()
+        
+    def cerrarConexion(self):
+        self.miConexion.close()   
