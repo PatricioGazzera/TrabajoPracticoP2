@@ -72,4 +72,9 @@ class ProgramaPrincipal:
         conexion.miCursor.execute("CREATE TABLE MONOPATIN_1 (id_monopatin INTEGER PRIMARY KEY ,  marca  VARCHAR(30),  precio FLOAT NOT NULL, cantidad VARCHAR(30),disponibilidad VARCHAR(30),UNIQUE(marca))")      
         conexion.miConexion.commit()     
         conexion.cerrarConexion() 
-    
+
+class Monopatin_2:
+    def __init__(self, modelo,marca, potencia,precio=None,color=None,fechaUltimoPrecio=None):
+        self.modelo = modelo
+        self.marca = marca
+        self.potencia = potencia
