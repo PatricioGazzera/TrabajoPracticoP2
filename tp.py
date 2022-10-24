@@ -90,6 +90,23 @@ class Monopatin_1:
             conexion.miCursor.execute("INSERT INTO MONOPATIN_1(marca,precio,cantidad,disponibilidad) VALUES('{}', '{}','{}','{}')".format(self.marca,self.precio,self.cantidad,self.disponibilidad))
             conexion.miConexion.commit()
             print("Monopatin cargado exitosamente")
+        except:
+            print("Error al agregar un monopatin")
+        finally:
+            conexion.cerrarConexion()
+
+    def listar_monopatines_1(self):
+        conexion = Conexiones()
+        conexion.abrirConexion()
+        try:
+            data=conexion.miCursor.execute("SELECT * FROM MONOPATIN_1")
+            conexion.miConexion.commit()
+            monopatin_1 = data.fetchall()
+            for a in monopatin_1:
+                print(a)
+        except:
+            print("Error al listar los monopatines")
+        
 
      
     
