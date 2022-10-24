@@ -138,10 +138,22 @@ class Monopatin_1:
         conexion = Conexiones()
         conexion.abrirConexion()
         try:
-            
             conexion.miCursor.execute("DELETE FROM MONOPATIN_1 where marca='{}' ".format(self.marca))
             conexion.miConexion.commit()
             print("Monopatin eliminado correctamente")
+        except:
+            print('Error al eliminar el monopatin')
+        finally:
+            conexion.cerrarConexion()
+class Monopatin_2:
+    def __init__(self, modelo,marca, potencia,precio,color,fechaUltimoPrecio):
+        self.modelo = modelo
+        self.marca = marca
+        self.potencia  = potencia
+        self.precio=precio
+        self.color=color
+        self.fechaUltimoPrecio=fechaUltimoPrecio
+        
 
      
     
