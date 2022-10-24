@@ -78,6 +78,13 @@ class Monopatin_2:
         self.modelo = modelo
         self.marca = marca
         self.potencia = potencia
+        self.precio=precio
+        self.color=color
+        self.fechaUltimoPrecio=fechaUltimoPrecio
+
+    def cargar_monopatin_2(self):
+        conexion = Conexiones()
+        conexion.abrirConexion()
 
 
 class Conexiones:
