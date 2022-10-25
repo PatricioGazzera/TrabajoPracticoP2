@@ -153,7 +153,7 @@ class Monopatin_2:
         self.precio=precio
         self.color=color
         self.fechaUltimoPrecio=fechaUltimoPrecio
-        
+
 
      
     
@@ -168,3 +168,7 @@ class Conexiones:
         
     def cerrarConexion(self):
         self.miConexion.close()   
+
+programa = ProgramaPrincipal()
+programa.crearTablas()
+programa.menu()
