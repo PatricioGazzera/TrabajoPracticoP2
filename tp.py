@@ -188,9 +188,22 @@ class Monopatin_2:
              print("Error al actualizar el histórico")
         finally:
             conexion.cerrarConexion()
-    
-    
-
+            
+    def buscar_por_fecha(self):
+        conexion = Conexiones()
+        conexion.abrirConexion()
+        try:
+             data=conexion.miCursor.execute("SELECT * FROM MONOPATIN_2 WHERE fechaUltimoPrecio <= '{}'".format(self.fechaUltimoPrecio))
+             conexion.miConexion.commit()
+            
+             monopatines = data.fetchall()
+            
+             for a in monopatines:
+                print(a)
+        except:
+            print("Error al listar los monopatines")
+        finally:
+            conexion.cerrarConexion()
 
 class Conexiones:
     
