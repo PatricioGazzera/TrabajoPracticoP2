@@ -154,7 +154,17 @@ class Monopatin_2:
         self.color=color
         self.fechaUltimoPrecio=fechaUltimoPrecio
 
-
+    def cargar_monopatin_2(self):
+        conexion = Conexiones()
+        conexion.abrirConexion()
+        try:
+            conexion.miCursor.execute("INSERT INTO MONOPATIN_2(modelo,marca,potencia,precio,color,fechaUltimoPrecio) VALUES('{}', '{}','{}','{}','{}','{}')".format(self.modelo, self.marca,self.potencia,self.precio,self.color,self.fechaUltimoPrecio))
+            conexion.miConexion.commit()
+            print("Monopatin cargado exitosamente")
+        except:
+            print("Error al agregar un monopatin")
+        finally:
+            conexion.cerrarConexion()
      
     
     
@@ -172,3 +182,4 @@ class Conexiones:
 programa = ProgramaPrincipal()
 programa.crearTablas()
 programa.menu()
+
