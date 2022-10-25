@@ -166,6 +166,28 @@ class Monopatin_2:
         finally:
             conexion.cerrarConexion()
      
+    def cargar_historico(self):
+        conexion = Conexiones()
+        conexion.abrirConexion()
+        
+        try:
+             conexion.miCursor.execute("INSERT INTO MONOPATIN_HISTORICO (modelo,marca,potencia,precio,color,fechaUltimoPrecio) SELECT modelo,marca,potencia,precio,color,fechaUltimoPrecio FROM MONOPATIN_2")
+             conexion.miConexion.commit()
+             print("Historico Cargado correctamente")
+             conexion.miCursor.execute("UPDATE MONOPATIN_2 SET precio =  precio * 1.23, fechaUltimoPrecio = '{}'".format(datetime.now()))
+             conexion.miConexion.commit()
+             data=conexion.miCursor.execute("SELECT * FROM MONOPATIN_2")
+             conexion.miConexion.commit()
+             monopatines = data.fetchall()
+
+             print("Listado de la tabla 2 con el 23% más")
+
+             for a in monopatines:
+                print(a)
+        except:
+             print("Error al actualizar el histórico")
+        finally:
+            conexion.cerrarConexion()
     
     
 
