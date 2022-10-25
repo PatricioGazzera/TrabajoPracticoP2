@@ -15,9 +15,6 @@ class ProgramaPrincipal:
             print("6- Ver listado")
             print("7- Cargar Historico")
             print("8- Buscar por fecha")
-
-            
-            
             print("0- Salir de menu")
             nro = int(input("Por favor ingrese un número:"))
             if nro == 1:
